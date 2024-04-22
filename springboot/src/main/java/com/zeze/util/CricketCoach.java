@@ -1,4 +1,4 @@
-package com.zeze.springboot.core;
+package com.zeze.util;
 
 import org.springframework.stereotype.Component;
 

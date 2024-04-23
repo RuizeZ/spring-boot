@@ -1,4 +1,4 @@
-package com.zeze.util;
+package com.zeze.springboot.core.common;
 
 import org.springframework.stereotype.Component;
 
@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class CricketCoach implements Coach{
     @Override
     public String getDailyWorkout() {
-        return "Run for 15 minutes";
+        return "Run for 15 minutes!!!";
     }
 }

@@ -16,7 +16,7 @@ public class DemoController {
 //        myCoach = theCoach;
 //    }
         @Autowired // inject a dependency
-    public DemoController(@Qualifier("baseballCoach") Coach theCoach){
+    public DemoController(@Qualifier("mySwimCoach") Coach theCoach){
             System.out.println("Building " + getClass().getSimpleName());
             myCoach = theCoach;
     }

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-spring-core" />
+        <module name="spring-boot-hibernate-jpa-crud" />
         <module name="springboot" />
       </profile>
     </annotationProcessing>
@@ -14,6 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Spring-boot" options="" />
+      <module name="spring-boot-hibernate-jpa-crud" options="-parameters" />
       <module name="spring-boot-spring-core" options="-parameters" />
       <module name="springboot" options="-parameters" />
     </option>

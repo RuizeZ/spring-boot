@@ -33,9 +33,35 @@ public class SpringbootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-			System.out.println("hello");
-			createStudent(studentDAO);
+//			createStudent(studentDAO);
+//			createMultipleStudents(studentDAO);
+			readStudent(studentDAO);
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		System.out.println("Creating the student");
+		Student tempStudent = new Student("test", "test", "test ");
+		System.out.println("saving student");
+		studentDAO.save(tempStudent);
+		System.out.println("student Id: " + tempStudent.getId());
+		System.out.println(studentDAO.findById(tempStudent.getId()));
+	}
+
+	private void createMultipleStudents(StudentDAO studentDAO) {
+//		System.out.println("Creating the student");
+//		Student tempStudent1 = new Student("test", "test", "test ");
+//		System.out.println("saving student");
+//		studentDAO.save(tempStudent1);
+//		System.out.println("student Id: " + tempStudent1.getId());
+//		Student tempStudent2 = new Student("test2", "test", "test ");
+//		System.out.println("saving student");
+//		studentDAO.save(tempStudent2);
+//		System.out.println("student Id: " + tempStudent2.getId());
+//		Student tempStudent3 = new Student("test3", "test", "test ");
+//		System.out.println("saving student");
+//		studentDAO.save(tempStudent3);
+//		System.out.println("student Id: " + tempStudent3.getId());
 	}
 
 	private void createStudent(StudentDAO studentDAO) {

@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.List;
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.zeze.crud", "com.zeze.springboot"})
 @EntityScan(basePackages = "com.zeze.crud.entity")
@@ -35,8 +37,26 @@ public class SpringbootApplication {
 		return runner -> {
 //			createStudent(studentDAO);
 //			createMultipleStudents(studentDAO);
-			readStudent(studentDAO);
+//			readStudent(studentDAO);
+//			queryForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findByLastName("zhang");
+		for (Student student :
+				students) {
+			System.out.println(student);
+		}
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+		List<Student> theStudents = studentDAO.findAll();
+		for (Student student :
+				theStudents) {
+			System.out.println(student);
+		}
 	}
 
 	private void readStudent(StudentDAO studentDAO) {

@@ -39,8 +39,26 @@ public class SpringbootApplication {
 //			createMultipleStudents(studentDAO);
 //			readStudent(studentDAO);
 //			queryForStudents(studentDAO);
-			queryForStudentsByLastName(studentDAO);
+//			queryForStudentsByLastName(studentDAO);
+//			update(studentDAO);
+//			delete(studentDAO);
+			deleteAll(studentDAO);
 		};
+	}
+
+	private void deleteAll(StudentDAO studentDAO) {
+		System.out.println(studentDAO.deleteAll());
+	}
+
+	private void delete(StudentDAO studentDAO) {
+		studentDAO.delete(1);
+	}
+
+	private void update(StudentDAO studentDAO) {
+		Student student = studentDAO.findById(1);
+		student.setLastName("zeze");
+		studentDAO.update(student);
+		System.out.println(studentDAO.findById(1));
 	}
 
 	private void queryForStudentsByLastName(StudentDAO studentDAO) {

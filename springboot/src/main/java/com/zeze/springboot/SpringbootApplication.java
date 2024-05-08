@@ -36,13 +36,13 @@ public class SpringbootApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
 //			createStudent(studentDAO);
-//			createMultipleStudents(studentDAO);
+			createMultipleStudents(studentDAO);
 //			readStudent(studentDAO);
 //			queryForStudents(studentDAO);
 //			queryForStudentsByLastName(studentDAO);
 //			update(studentDAO);
 //			delete(studentDAO);
-			deleteAll(studentDAO);
+//			deleteAll(studentDAO);
 		};
 	}
 
@@ -87,19 +87,19 @@ public class SpringbootApplication {
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
-//		System.out.println("Creating the student");
-//		Student tempStudent1 = new Student("test", "test", "test ");
-//		System.out.println("saving student");
-//		studentDAO.save(tempStudent1);
-//		System.out.println("student Id: " + tempStudent1.getId());
-//		Student tempStudent2 = new Student("test2", "test", "test ");
-//		System.out.println("saving student");
-//		studentDAO.save(tempStudent2);
-//		System.out.println("student Id: " + tempStudent2.getId());
-//		Student tempStudent3 = new Student("test3", "test", "test ");
-//		System.out.println("saving student");
-//		studentDAO.save(tempStudent3);
-//		System.out.println("student Id: " + tempStudent3.getId());
+		System.out.println("Creating the student");
+		Student tempStudent1 = new Student("test", "test", "test ");
+		System.out.println("saving student");
+		studentDAO.save(tempStudent1);
+		System.out.println("student Id: " + tempStudent1.getId());
+		Student tempStudent2 = new Student("test2", "test", "test ");
+		System.out.println("saving student");
+		studentDAO.save(tempStudent2);
+		System.out.println("student Id: " + tempStudent2.getId());
+		Student tempStudent3 = new Student("test3", "test", "test ");
+		System.out.println("saving student");
+		studentDAO.save(tempStudent3);
+		System.out.println("student Id: " + tempStudent3.getId());
 	}
 
 	private void createStudent(StudentDAO studentDAO) {

@@ -23,6 +23,7 @@
 		<module>spring-boot-spring-core</module>
 		<module>spring-boot-hibernate-jpa-crud</module>
         <module>spring-boot-rest-crud</module>
+		<module>spring-boot-crud-demo</module>
     </modules>
 
 	<dependencies>

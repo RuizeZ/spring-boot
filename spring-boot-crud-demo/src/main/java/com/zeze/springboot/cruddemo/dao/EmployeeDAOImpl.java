@@ -38,7 +38,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Override
     public Employee save(Employee theEmployee) {
         Employee dbEmployee = entityManager.merge(theEmployee);
-        return theEmployee;
+        return dbEmployee;
     }
 
     @Override

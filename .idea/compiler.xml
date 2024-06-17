@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-spring-core" />
         <module name="spring-boot-crud-demo" />
+        <module name="spring-boot-rest-crud-spring-data-jpa" />
         <module name="spring-boot-rest-crud" />
         <module name="spring-boot-hibernate-jpa-crud" />
         <module name="springboot" />
@@ -21,6 +22,7 @@
       <module name="spring-boot-crud-demo" options="-parameters" />
       <module name="spring-boot-hibernate-jpa-crud" options="-parameters" />
       <module name="spring-boot-rest-crud" options="-parameters" />
+      <module name="spring-boot-rest-crud-spring-data-jpa" options="-parameters" />
       <module name="spring-boot-spring-core" options="-parameters" />
       <module name="springboot" options="-parameters" />
     </option>

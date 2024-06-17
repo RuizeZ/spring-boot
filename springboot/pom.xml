@@ -37,6 +37,11 @@
 			<artifactId>spring-boot-crud-demo</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.zeze</groupId>
+			<artifactId>spring-boot-rest-crud-spring-data-jpa</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

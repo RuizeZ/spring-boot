@@ -1,5 +1,5 @@
 package com.zeze.springboot.service;
-import com.zeze.springboot.eneity.EmployeeJPA;
+import com.zeze.springboot.entity.EmployeeJPA;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.zeze.springboot.service;
 
 import com.zeze.springboot.dao.EmployeeJPARepository;
-import com.zeze.springboot.eneity.EmployeeJPA;
+import com.zeze.springboot.entity.EmployeeJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

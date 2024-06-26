@@ -1,6 +1,6 @@
 package com.zeze.springboot.rest;
 
-import com.zeze.springboot.eneity.EmployeeJPA;
+import com.zeze.springboot.entity.EmployeeJPA;
 import com.zeze.springboot.service.EmployeeJPAService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

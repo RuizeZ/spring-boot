@@ -14,7 +14,7 @@ import java.util.List;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.zeze.crud", "com.zeze.springboot"})
-@EntityScan(basePackages = {"com.zeze.crud.entity", "com.zeze.springboot"})
+@EntityScan(basePackages = {"com.zeze.crud.entity", "com.zeze.springboot.entity"})
 public class SpringbootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootApplication.class, args);

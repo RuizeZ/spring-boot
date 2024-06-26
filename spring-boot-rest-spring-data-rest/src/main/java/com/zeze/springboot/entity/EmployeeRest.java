@@ -1,4 +1,4 @@
-package com.zeze.springboot.eneity;
+package com.zeze.springboot.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @Entity
 @Table(name="employee")
-public class EmployeeJPA {
+public class EmployeeRest {
     // define fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +21,10 @@ public class EmployeeJPA {
 
     // define constructors
 
-    public EmployeeJPA() {
+    public EmployeeRest() {
     }
 
-    public EmployeeJPA(String firstName, String lastName, String email) {
+    public EmployeeRest(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

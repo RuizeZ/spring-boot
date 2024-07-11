@@ -9,8 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.List;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.zeze.crud", "com.zeze.springboot"})
@@ -32,6 +37,21 @@ public class SpringbootApplication {
 //			System.exit(0);
 //		};
 //	}
+	@EnableWebSecurity
+	public class SecurityConfig {
+
+		@Bean
+		public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+			http
+					.authorizeHttpRequests((requests) -> requests
+							.requestMatchers("/thymeleaf/**").permitAll() // Public endpoint
+							.anyRequest().authenticated() // All other endpoints require authentication
+					).formLogin(withDefaults()) // Configure form login
+					.httpBasic(withDefaults());  // Configure HTTP Basic authentication
+
+			return http.build();
+		}
+	}
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {

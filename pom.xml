@@ -27,7 +27,8 @@
         <module>spring-boot-rest-crud-spring-data-jpa</module>
         <module>spring-boot-rest-spring-data-rest</module>
 		<module>spring-boot-rest-recurity</module>
-	</modules>
+        <module>spring-boot-thymeleafdemo</module>
+    </modules>
 
 	<dependencies>
 		<dependency>
@@ -59,6 +60,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<dependency>

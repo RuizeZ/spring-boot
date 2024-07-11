@@ -4,7 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.SecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -13,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import javax.sql.DataSource;
 
 @Configuration
+//@EnableWebSecurity
 public class DemoSecurityConfig {
 /*    @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
@@ -47,6 +50,10 @@ public class DemoSecurityConfig {
 
     @Bean
     public SecurityFilterChain fileterChain(HttpSecurity http) throws Exception{
+//        http.authorizeHttpRequests((configurer ->
+//                configurer
+//                        .requestMatchers(HttpMethod.GET, "thymeleaf/hello").hasRole("EMPLOYEE")
+//        ));
         http.authorizeHttpRequests((configurer ->
                 configurer
                         .requestMatchers(HttpMethod.GET, "api/security/employees").hasRole("EMPLOYEE")
@@ -78,4 +85,15 @@ public class DemoSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers("/thymeleaf/hello").permitAll() // Endpoints to be ignored
+//                      .anyRequest().authenticated() // All other endpoints require authentication
+//            );
+//
+//        return http.build();
+//    }
 }

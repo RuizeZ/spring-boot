@@ -52,6 +52,12 @@
 			<artifactId>spring-boot-rest-recurity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.zeze</groupId>
+			<artifactId>spring-boot-thymeleafdemo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

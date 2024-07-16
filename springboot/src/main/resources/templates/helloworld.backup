@@ -8,15 +8,6 @@
           th:href="@{/css/demo.css}" />
 </head>
 <body>
-    Hello World of Spring!
-
-<br><br>
-Student name: <span th:text="${param.studentName}"/>
-
-    <br><br>
-
-The Message: <span th:text="${message}"/>
-
-
+    <p th:text="'Time on the server is ' + ${theDate}" class="funny"></p>
 </body>
 </html>

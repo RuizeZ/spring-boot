@@ -44,7 +44,7 @@ public class SpringbootApplication {
 		public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 			http
 					.authorizeHttpRequests((requests) -> requests
-							.requestMatchers("/thymeleaf/**").permitAll() // Public endpoint
+							.requestMatchers("/**").permitAll() // Public endpoint
 							.anyRequest().authenticated() // All other endpoints require authentication
 					).formLogin(withDefaults()) // Configure form login
 					.httpBasic(withDefaults());  // Configure HTTP Basic authentication

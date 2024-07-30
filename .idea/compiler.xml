@@ -16,6 +16,7 @@
         <module name="spring-boot-rest-spring-data-rest" />
         <module name="spring-boot-rest-crud-spring-data-jpa" />
         <module name="springboot" />
+        <module name="spring-boot-mvc" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,6 +25,7 @@
       <module name="Spring-boot" options="" />
       <module name="spring-boot-crud-demo" options="-parameters" />
       <module name="spring-boot-hibernate-jpa-crud" options="-parameters" />
+      <module name="spring-boot-mvc" options="-parameters" />
       <module name="spring-boot-rest-crud" options="-parameters" />
       <module name="spring-boot-rest-crud-spring-data-jpa" options="-parameters" />
       <module name="spring-boot-rest-recurity" options="-parameters" />

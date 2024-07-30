@@ -28,9 +28,16 @@
         <module>spring-boot-rest-spring-data-rest</module>
 		<module>spring-boot-rest-recurity</module>
         <module>spring-boot-thymeleafdemo</module>
+        <module>spring-boot-mvc</module>
     </modules>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

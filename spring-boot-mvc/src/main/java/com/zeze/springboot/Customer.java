@@ -1,5 +1,6 @@
 package com.zeze.springboot;
 
+import com.zeze.springboot.validation.CourseCode;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -7,6 +8,9 @@ import lombok.Data;
 public class Customer {
 
     private String firstName;
+
+    @CourseCode(value = "TOPS", message = "must start with TOPS")
+    private String courseCode;
 
     @NotNull(message = "is required")
     @Size(min=1, message = "is required")

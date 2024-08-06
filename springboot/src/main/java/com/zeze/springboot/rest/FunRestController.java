@@ -11,10 +11,10 @@ public class FunRestController {
     @Value("${team.name}")
     private String teamName;
     // expose "/" that return ""Hello World
-    @GetMapping("/")
-    public String sayHello(){
-        return "Hello World!";
-    }
+//    @GetMapping("/")
+//    public String sayHello(){
+//        return "index";
+//    }
     @GetMapping("/workout")
     public String getDailyWorkout(){
         return "workout";

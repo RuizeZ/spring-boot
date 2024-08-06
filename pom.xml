@@ -29,6 +29,7 @@
 		<module>spring-boot-rest-recurity</module>
         <module>spring-boot-thymeleafdemo</module>
         <module>spring-boot-mvc</module>
+        <module>spring-boot-mvc-crud</module>
     </modules>
 
 	<dependencies>

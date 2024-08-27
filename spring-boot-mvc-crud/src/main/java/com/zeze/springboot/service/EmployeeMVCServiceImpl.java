@@ -19,7 +19,7 @@ public class EmployeeMVCServiceImpl implements EmployeeMVCService {
 
     @Override
     public List<EmployeeMVC> findAll() {
-        return employeeJPARepository.findAll();
+        return employeeJPARepository.findAllByOrderByLastNameAsc();
     }
 
     @Override
@@ -36,8 +36,7 @@ public class EmployeeMVCServiceImpl implements EmployeeMVCService {
 
     @Override
     public EmployeeMVC save(EmployeeMVC theEmployeeJPA) {
-        EmployeeMVC dbEmployeeJPA = employeeJPARepository.save(theEmployeeJPA);
-        return dbEmployeeJPA;
+        return employeeJPARepository.save(theEmployeeJPA);
     }
 
     @Override

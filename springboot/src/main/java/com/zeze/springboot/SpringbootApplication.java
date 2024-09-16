@@ -3,6 +3,7 @@ package com.zeze.springboot;
 import com.zeze.crud.dao.StudentDAO;
 import com.zeze.crud.entity.Student;
 import com.zeze.springboot.dao.AppDAO;
+import com.zeze.springboot.entity.Course;
 import com.zeze.springboot.entity.Instructor;
 import com.zeze.springboot.entity.InstructorDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,10 +63,54 @@ public class SpringbootApplication {
 //			findInstructor(appDAO);
 //			deleteInstructorById(appDAO);
 //			findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+//			deleteInstructorDetail(appDAO);
+//			createInstructorWithCourses(appDAO);
+//			findInstructorWithCourses(appDAO);
+			findCourseForInstructor(appDAO);
 		};
 
 
+
+	}
+
+	private void findCourseForInstructor(AppDAO appDAO) {
+		int theId = 2;
+		System.out.println("Finding instructor id: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("tempInstructor: " + tempInstructor);
+		System.out.println("Finding courses");
+		List<Course> courses = appDAO.findCoursesByInstructorId(theId);
+		tempInstructor.setCourses(courses);
+		System.out.println("the courses: " + tempInstructor.getCourses());
+		System.out.println("Done");
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		int theId = 2;
+		System.out.println("Finding instructor id: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("tempInstructor: " + tempInstructor);
+		System.out.println("the courses: " + tempInstructor.getCourses());
+		System.out.println("Done");
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		Instructor tempInstructor =
+				new Instructor("Ruize", "Zhang", "zeze.zhang@gmail.com");
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail("www.google.com", "gamer");
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		Course tempCourse1 = new Course("Java");
+		Course tempCourse2 = new Course("Python");
+		Course tempCourse3 = new Course("Go");
+		tempInstructor.add(tempCourse1);
+		tempInstructor.add(tempCourse2);
+		tempInstructor.add(tempCourse3);
+
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+		System.out.println("Done");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {

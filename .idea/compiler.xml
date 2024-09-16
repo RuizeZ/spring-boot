@@ -14,6 +14,7 @@
         <module name="spring-boot-rest-crud" />
         <module name="spring-boot-hibernate-jpa-crud" />
         <module name="spring-boot-rest-spring-data-rest" />
+        <module name="spring-boot-jpa-mapping" />
         <module name="spring-boot-rest-crud-spring-data-jpa" />
         <module name="spring-boot-mvc-crud" />
         <module name="springboot" />
@@ -26,6 +27,7 @@
       <module name="Spring-boot" options="" />
       <module name="spring-boot-crud-demo" options="-parameters" />
       <module name="spring-boot-hibernate-jpa-crud" options="-parameters" />
+      <module name="spring-boot-jpa-mapping" options="-parameters" />
       <module name="spring-boot-mvc" options="-parameters" />
       <module name="spring-boot-mvc-crud" options="-parameters" />
       <module name="spring-boot-rest-crud" options="-parameters" />

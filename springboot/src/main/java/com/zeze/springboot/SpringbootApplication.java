@@ -2,6 +2,9 @@ package com.zeze.springboot;
 
 import com.zeze.crud.dao.StudentDAO;
 import com.zeze.crud.entity.Student;
+import com.zeze.springboot.dao.AppDAO;
+import com.zeze.springboot.entity.Instructor;
+import com.zeze.springboot.entity.InstructorDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -53,17 +56,64 @@ public class SpringbootApplication {
 		}
 	}
 	@Bean
-	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
+	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-//			createStudent(studentDAO);
-//			createMultipleStudents(studentDAO);
-//			readStudent(studentDAO);
-//			queryForStudents(studentDAO);
-//			queryForStudentsByLastName(studentDAO);
-//			update(studentDAO);
-//			delete(studentDAO);
-//			deleteAll(studentDAO);
+//			createInstructor(appDAO);
+//			findInstructor(appDAO);
+//			deleteInstructorById(appDAO);
+//			findInstructorDetail(appDAO);
+			deleteInstructorDetail(appDAO);
 		};
+
+
+	}
+
+	private void deleteInstructorDetail(AppDAO appDAO) {
+		int theId = 6;
+		System.out.println("Delete InstructorDetail ID: " + theId);
+		appDAO.deleteInstructorDetailById(theId);
+		System.out.println("Done!");
+	}
+
+	private void findInstructorDetail(AppDAO appDAO) {
+		int theId = 2;
+		InstructorDetail tempInstructorDetail = appDAO.findInstructorDetailById(theId);
+		System.out.println("tempInstructorDetail: "+ tempInstructorDetail.getHobby());
+		System.out.println("tempInstructor: "+ tempInstructorDetail.getInstructor());
+		System.out.println("DONE");
+	}
+
+	private void deleteInstructorById(AppDAO appDAO) {
+		int theId = 1;
+		appDAO.deleteInstructorById(theId);
+		System.out.println("done");
+	}
+
+	private void findInstructor(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("Finding instructor id: " + theId);
+		Instructor thempInstructor = appDAO.findInstructorById(theId);
+		System.out.println("thempInstructor: " + thempInstructor);
+		System.out.println("detail: " + thempInstructor.getInstructorDetail());
+	}
+
+	private void createInstructor(AppDAO appDAO) {
+//		Instructor tempInstructor =
+//				new Instructor("Ruize", "Zhang", "ruize.zhang@gmail.com");
+//		InstructorDetail tempInstructorDetail =
+//				new InstructorDetail("www.youtube.com", "Coding");
+//		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		Instructor tempInstructor =
+				new Instructor("Zeze", "Zhang", "zeze.zhang@gmail.com");
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail("www.youtube.com", "soccer");
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+		System.out.println("Done");
 	}
 
 	private void deleteAll(StudentDAO studentDAO) {

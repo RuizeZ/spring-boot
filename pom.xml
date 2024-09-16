@@ -30,6 +30,7 @@
         <module>spring-boot-thymeleafdemo</module>
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-crud</module>
+        <module>spring-boot-jpa-mapping</module>
     </modules>
 
 	<dependencies>

@@ -66,10 +66,44 @@ public class SpringbootApplication {
 //			deleteInstructorDetail(appDAO);
 //			createInstructorWithCourses(appDAO);
 //			findInstructorWithCourses(appDAO);
-			findCourseForInstructor(appDAO);
+//			findCourseForInstructor(appDAO);
+//			findInstructorWithCoursesJoinFetch(appDAO);
+//			updateInstructor(appDAO);
+//			updateCourse(appDAO);
+			deleteCourseById(appDAO);
 		};
 
 
+
+	}
+
+	private void deleteCourseById(AppDAO appDAO) {
+		int theId = 10;
+		appDAO.deleteCourseById(theId);
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+		int theId = 10;
+		Course courseById = appDAO.findCourseById(theId);
+		courseById.setTitle("ECON101");
+		appDAO.updateCourse(courseById);
+		System.out.println("Done");
+	}
+
+	private void updateInstructor(AppDAO appDAO) {
+		int theId = 2;
+		Instructor instructor = appDAO.findInstructorById(theId);
+		instructor.setFirstName("Steve");
+		appDAO.update(instructor);
+		System.out.println("Done");
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int theId = 2;
+		System.out.println("Finding id: " + theId);
+		Instructor instructor = appDAO.findInstructorByIdJoinFetch(theId);
+		System.out.println(instructor);
+		System.out.println("Done");
 
 	}
 
@@ -129,7 +163,7 @@ public class SpringbootApplication {
 	}
 
 	private void deleteInstructorById(AppDAO appDAO) {
-		int theId = 1;
+		int theId = 2;
 		appDAO.deleteInstructorById(theId);
 		System.out.println("done");
 	}

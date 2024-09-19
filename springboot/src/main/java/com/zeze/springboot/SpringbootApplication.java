@@ -6,6 +6,7 @@ import com.zeze.springboot.dao.AppDAO;
 import com.zeze.springboot.entity.Course;
 import com.zeze.springboot.entity.Instructor;
 import com.zeze.springboot.entity.InstructorDetail;
+import com.zeze.springboot.entity.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -65,16 +66,38 @@ public class SpringbootApplication {
 //			findInstructorDetail(appDAO);
 //			deleteInstructorDetail(appDAO);
 //			createInstructorWithCourses(appDAO);
-//			findInstructorWithCourses(appDAO);
+			findInstructorWithCourses(appDAO);
 //			findCourseForInstructor(appDAO);
 //			findInstructorWithCoursesJoinFetch(appDAO);
 //			updateInstructor(appDAO);
 //			updateCourse(appDAO);
-			deleteCourseById(appDAO);
+//			deleteCourseById(appDAO);
+//			createCourseAndReviews(appDAO);
+//			getCourseAndReviews(appDAO);
+//			deleteCourseAndReviews(appDAO);
 		};
+	}
 
+	private void deleteCourseAndReviews(AppDAO appDAO) {
+		int theId = 10;
+		System.out.println("Deleting");
+		appDAO.deleteCourseById(theId);
+	}
 
+	private void getCourseAndReviews(AppDAO appDAO) {
+		int theId = 10;
+		Course tempCourse = appDAO.findCourseAndReviewsByCourseId(theId);
+		System.out.println(tempCourse);
+		System.out.println(tempCourse.getReviews());
+	}
 
+	private void createCourseAndReviews(AppDAO appDAO) {
+		Course tempCourse = new Course("C++");
+		tempCourse.addReview(new Review("Bad"));
+		tempCourse.addReview(new Review("Good"));
+		tempCourse.addReview(new Review("hahaha"));
+		tempCourse.addReview(new Review("you sucks"));
+		appDAO.save(tempCourse);
 	}
 
 	private void deleteCourseById(AppDAO appDAO) {
@@ -120,7 +143,7 @@ public class SpringbootApplication {
 	}
 
 	private void findInstructorWithCourses(AppDAO appDAO) {
-		int theId = 2;
+		int theId = 1;
 		System.out.println("Finding instructor id: " + theId);
 		Instructor tempInstructor = appDAO.findInstructorById(theId);
 		System.out.println("tempInstructor: " + tempInstructor);

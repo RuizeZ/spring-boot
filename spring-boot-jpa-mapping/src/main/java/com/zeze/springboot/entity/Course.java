@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="course")
 @Data
@@ -21,6 +24,17 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     @ToString.Exclude
     private Instructor instructor;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
+    public void addReview(Review review){
+        if(reviews == null){
+            reviews = new ArrayList<>();
+        }
+        reviews.add(review);
+    }
 
     public Course() {
     }

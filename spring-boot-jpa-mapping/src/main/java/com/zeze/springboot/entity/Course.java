@@ -25,15 +25,30 @@ public class Course {
     @ToString.Exclude
     private Instructor instructor;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
     private List<Review> reviews;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(name = "course_student",
+               joinColumns = @JoinColumn(name = "course_id"),
+               inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @ToString.Exclude
+    private List<StudentJPAMapping> studentJPAMappings;
 
     public void addReview(Review review){
         if(reviews == null){
             reviews = new ArrayList<>();
         }
         reviews.add(review);
+    }
+
+
+    public void addStudent(StudentJPAMapping theStudentJPAMapping){
+        if(studentJPAMappings == null){
+            studentJPAMappings = new ArrayList<>();
+        }
+        studentJPAMappings.add(theStudentJPAMapping);
     }
 
     public Course() {

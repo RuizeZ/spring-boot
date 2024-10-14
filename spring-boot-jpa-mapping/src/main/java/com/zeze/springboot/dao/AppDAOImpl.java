@@ -3,6 +3,7 @@ package com.zeze.springboot.dao;
 import com.zeze.springboot.entity.Course;
 import com.zeze.springboot.entity.Instructor;
 import com.zeze.springboot.entity.InstructorDetail;
+import com.zeze.springboot.entity.StudentJPAMapping;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,5 +113,35 @@ public class AppDAOImpl implements AppDAO{
         query.setParameter("data", theId);
         Course course = query.getSingleResult();
         return course;
+    }
+
+    @Override
+    public Course findCourseAndStudentByCourseId(int theId) {
+        TypedQuery<Course> query = entityManager.createQuery("select c from Course c JOIN FETCH c.studentJPAMappings where c.id = :data", Course.class);
+        query.setParameter("data", theId);
+        Course course = query.getSingleResult();
+        return course;
+    }
+
+    @Override
+    public StudentJPAMapping findCourseAndStudentByStudentId(int theId) {
+        TypedQuery<StudentJPAMapping> query = entityManager.createQuery("select c from StudentJPAMapping c JOIN FETCH c.courses where c.id = :data", StudentJPAMapping.class);
+        query.setParameter("data", theId);
+        StudentJPAMapping course = query.getSingleResult();
+        return course;
+    }
+
+    @Override
+    @Transactional
+    public void update(StudentJPAMapping tempStudent) {
+        entityManager.merge(tempStudent);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudentById(int theId) {
+        StudentJPAMapping tempStudent = entityManager.find(StudentJPAMapping.class, 3);
+        entityManager.remove(tempStudent);
     }
 }

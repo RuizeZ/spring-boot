@@ -2,9 +2,6 @@ package com.zeze.springboot.rest;
 
 import com.zeze.springboot.entity.Student;
 import jakarta.annotation.PostConstruct;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

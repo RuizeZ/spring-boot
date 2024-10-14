@@ -1,13 +1,11 @@
 package com.zeze.springboot;
 
-import com.zeze.crud.dao.StudentDAO;
-import com.zeze.crud.entity.Student;
+import com.zeze.springboot.entity.StudentJPAMapping;
 import com.zeze.springboot.dao.AppDAO;
 import com.zeze.springboot.entity.Course;
 import com.zeze.springboot.entity.Instructor;
 import com.zeze.springboot.entity.InstructorDetail;
 import com.zeze.springboot.entity.Review;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -60,22 +58,50 @@ public class SpringbootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-//			createInstructor(appDAO);
-//			findInstructor(appDAO);
-//			deleteInstructorById(appDAO);
-//			findInstructorDetail(appDAO);
-//			deleteInstructorDetail(appDAO);
-//			createInstructorWithCourses(appDAO);
-			findInstructorWithCourses(appDAO);
-//			findCourseForInstructor(appDAO);
-//			findInstructorWithCoursesJoinFetch(appDAO);
-//			updateInstructor(appDAO);
-//			updateCourse(appDAO);
+//			createCourseAndStudents(appDAO);
+//			findCourseAndStudentByCourseId(appDAO);
+//			findCourseAndStudentByStudentId(appDAO);
+//			addMoreCoursesForStudent(appDAO);
 //			deleteCourseById(appDAO);
-//			createCourseAndReviews(appDAO);
-//			getCourseAndReviews(appDAO);
-//			deleteCourseAndReviews(appDAO);
+			deleteStudent(appDAO);
 		};
+	}
+
+	private void deleteStudent(AppDAO appDAO) {
+		int theId = 3;
+		appDAO.deleteStudentById(theId);
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		int theId = 3;
+		StudentJPAMapping tempStudent = appDAO.findCourseAndStudentByStudentId(theId);
+		Course tempCourse1 = new Course("English");
+		Course tempCourse2 = new Course("Chinese");
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+		appDAO.update(tempStudent);
+	}
+
+	private void findCourseAndStudentByStudentId(AppDAO appDAO) {
+		StudentJPAMapping courseAndStudentByCourseId = appDAO.findCourseAndStudentByStudentId(3);
+		System.out.println(courseAndStudentByCourseId);
+	}
+
+	private void findCourseAndStudent(AppDAO appDAO) {
+		Course courseAndStudentByCourseId = appDAO.findCourseAndStudentByCourseId(14);
+		System.out.println(courseAndStudentByCourseId);
+	}
+
+	private void findCourseAndStudentByCourseId(AppDAO appDAO) {
+		Course tempCourse = new Course("Java");
+		StudentJPAMapping tempStudents1 = new StudentJPAMapping("Ruize", "Zhang", "test@test.com");
+		StudentJPAMapping tempStudents2 = new StudentJPAMapping("Zeze", "Zhang", "test@test.com");
+		tempCourse.addStudent(tempStudents1);
+		tempCourse.addStudent(tempStudents2);
+		System.out.println(tempCourse);
+		appDAO.save(tempCourse);
+		System.out.println(tempCourse);
+
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
@@ -101,7 +127,7 @@ public class SpringbootApplication {
 	}
 
 	private void deleteCourseById(AppDAO appDAO) {
-		int theId = 10;
+		int theId = 14;
 		appDAO.deleteCourseById(theId);
 	}
 
@@ -218,13 +244,13 @@ public class SpringbootApplication {
 		System.out.println("Done");
 	}
 
-	private void deleteAll(StudentDAO studentDAO) {
-		System.out.println(studentDAO.deleteAll());
-	}
-
-	private void delete(StudentDAO studentDAO) {
-		studentDAO.delete(1);
-	}
+//	private void deleteAll(StudentDAO studentDAO) {
+//		System.out.println(studentDAO.deleteAll());
+//	}
+//
+//	private void delete(StudentDAO studentDAO) {
+//		studentDAO.delete(1);
+//	}
 
 //	private void update(StudentDAO studentDAO) {
 //		Student student = studentDAO.findById(1);

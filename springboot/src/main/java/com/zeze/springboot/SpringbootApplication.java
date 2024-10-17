@@ -1,5 +1,6 @@
 package com.zeze.springboot;
 
+import com.zeze.springboot.dao.AccountDAO;
 import com.zeze.springboot.entity.StudentJPAMapping;
 import com.zeze.springboot.dao.AppDAO;
 import com.zeze.springboot.entity.Course;
@@ -55,16 +56,29 @@ public class SpringbootApplication {
 			return http.build();
 		}
 	}
-	@Bean
-	public CommandLineRunner commandLineRunner(AppDAO appDAO){
-		return runner -> {
+//	@Bean
+//	public CommandLineRunner commandLineRunner(AppDAO appDAO){
+//		return runner -> {
 //			createCourseAndStudents(appDAO);
 //			findCourseAndStudentByCourseId(appDAO);
 //			findCourseAndStudentByStudentId(appDAO);
 //			addMoreCoursesForStudent(appDAO);
 //			deleteCourseById(appDAO);
-			deleteStudent(appDAO);
+//			deleteStudent(appDAO);
+//			System.out.println("Hello World");
+//		};
+//	}
+
+	@Bean
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO){
+		return runner -> {
+			demoTheBeforeAdvice(accountDAO);
 		};
+
+	}
+
+	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+		accountDAO.addAccount();
 	}
 
 	private void deleteStudent(AppDAO appDAO) {

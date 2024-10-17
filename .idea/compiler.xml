@@ -7,24 +7,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-boot-spring-core" />
-        <module name="spring-boot-rest-recurity" />
-        <module name="spring-boot-crud-demo" />
-        <module name="spring-boot-thymeleafdemo" />
         <module name="spring-boot-rest-crud" />
         <module name="spring-boot-hibernate-jpa-crud" />
         <module name="spring-boot-rest-spring-data-rest" />
         <module name="spring-boot-jpa-mapping" />
         <module name="spring-boot-rest-crud-spring-data-jpa" />
-        <module name="spring-boot-mvc-crud" />
         <module name="springboot" />
         <module name="spring-boot-mvc" />
+        <module name="spring-boot-spring-core" />
+        <module name="spring-boot-aopdemo" />
+        <module name="spring-boot-rest-recurity" />
+        <module name="spring-boot-crud-demo" />
+        <module name="spring-boot-thymeleafdemo" />
+        <module name="spring-boot-mvc-crud" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Spring-boot" options="" />
+      <module name="spring-boot-aopdemo" options="-parameters" />
       <module name="spring-boot-crud-demo" options="-parameters" />
       <module name="spring-boot-hibernate-jpa-crud" options="-parameters" />
       <module name="spring-boot-jpa-mapping" options="-parameters" />

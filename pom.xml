@@ -31,6 +31,7 @@
         <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-crud</module>
         <module>spring-boot-jpa-mapping</module>
+        <module>spring-boot-aopdemo</module>
     </modules>
 
 	<dependencies>
@@ -74,6 +75,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
 		<dependency>

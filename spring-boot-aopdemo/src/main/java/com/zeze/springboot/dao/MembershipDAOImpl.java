@@ -1,12 +1,11 @@
 package com.zeze.springboot.dao;
 
-import com.zeze.springboot.Account;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AccountDAOImpl implements AccountDAO{
+public class MembershipDAOImpl implements MembershipDAO{
     @Override
-    public void addAccount(Account theAccount, boolean vipFlag) {
+    public void addAccount() {
         System.out.println(getClass() + ": addAccount");
     }
 
@@ -14,5 +13,4 @@ public class AccountDAOImpl implements AccountDAO{
     public void doWork() {
         System.out.println(getClass() + ": doWork");
     }
-
 }

@@ -1,6 +1,7 @@
 package com.zeze.springboot;
 
 import com.zeze.springboot.dao.AccountDAO;
+import com.zeze.springboot.dao.MembershipDAO;
 import com.zeze.springboot.entity.StudentJPAMapping;
 import com.zeze.springboot.dao.AppDAO;
 import com.zeze.springboot.entity.Course;
@@ -70,15 +71,19 @@ public class SpringbootApplication {
 //	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
 		return runner -> {
-			demoTheBeforeAdvice(accountDAO);
+			demoTheBeforeAdvice(accountDAO, membershipDAO);
 		};
 
 	}
 
-	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
-		accountDAO.addAccount();
+	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
+		Account myAccount = new Account();
+		accountDAO.addAccount(myAccount, true);
+		membershipDAO.addAccount();
+		membershipDAO.doWork();
+		accountDAO.doWork();
 	}
 
 	private void deleteStudent(AppDAO appDAO) {

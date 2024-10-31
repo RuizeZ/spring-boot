@@ -84,6 +84,8 @@ public class SpringbootApplication {
 		membershipDAO.addAccount();
 		membershipDAO.doWork();
 		accountDAO.doWork();
+		accountDAO.getName();
+		accountDAO.getServiceCode();
 	}
 
 	private void deleteStudent(AppDAO appDAO) {

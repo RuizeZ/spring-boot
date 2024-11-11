@@ -73,9 +73,43 @@ public class SpringbootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
 		return runner -> {
-			demoTheBeforeAdvice(accountDAO, membershipDAO);
+//			demoTheBeforeAdvice(accountDAO, membershipDAO);
+//			demoTheAfterReturningAdvice(accountDAO);
+//			demoTheAfterThrowingAdvice(accountDAO);
+			demoTheAfterAdvice(accountDAO);
 		};
 
+
+	}
+
+	private void demoTheAfterAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = null;
+		try{
+			boolean tripWire = false;
+			accountDAO.findAccounts(tripWire);
+		} catch (Exception exc){
+			System.out.println("---------- caught exception");
+		}
+		System.out.println("---------- demoTheAfterThrowingAdvice");
+		System.out.println(accounts);
+	}
+
+	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = null;
+		try{
+			boolean tripWire = true;
+			accountDAO.findAccounts(tripWire);
+		} catch (Exception exc){
+			System.out.println("---------- caught exception");
+		}
+		System.out.println("---------- demoTheAfterThrowingAdvice");
+		System.out.println(accounts);
+	}
+
+	private void demoTheAfterReturningAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = accountDAO.findAccounts();
+		System.out.println("----------");
+		System.out.println(accounts);
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {

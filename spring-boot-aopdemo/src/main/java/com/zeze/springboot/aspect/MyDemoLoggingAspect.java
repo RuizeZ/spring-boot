@@ -2,6 +2,7 @@ package com.zeze.springboot.aspect;
 
 import com.zeze.springboot.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
@@ -13,6 +14,25 @@ import java.util.List;
 @Component
 @Order(3)
 public class MyDemoLoggingAspect {
+    @Around("execution( * com.zeze.springboot.service.TrafficFortuneService.getFortune(..))")
+    public Object aroundFortune(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+
+        String method = proceedingJoinPoint.getSignature().toShortString();
+        System.out.println("Running Around " +  method);
+        long begin = System.currentTimeMillis();
+        Object result = null;
+        try {
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception exc){
+            System.out.println(exc.getMessage());
+            result = "IT IS OK";
+            throw exc;
+        }
+        long end = System.currentTimeMillis();
+        long duration = end - begin;
+        System.out.println("++++++++> " + duration/1000.0 + "seconds");
+        return result;
+    }
     @After("execution( * com.zeze.springboot.dao.AccountDAO.findAccounts(..))")
     public void afterFinally(JoinPoint theJoinPoint){
         String method = theJoinPoint.getSignature().toShortString();
